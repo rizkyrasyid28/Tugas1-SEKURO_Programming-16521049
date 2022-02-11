@@ -55,24 +55,30 @@ Cara install git
 -	Pilih text editor
 -	Install Selesai
 
+git pada git bash
+![](foto/$git.png)
 Ketika install git, sudah include git bash yang mirip seperti cmd prompt.
 Git Command (local)
 1. Inisialisasi repo
 ```
 $ git init 
 ```
+![](foto/$gitinit.png)
 2. Menambahkan File
 ```
 $ git add <file(s)>
 ```
+![](foto/$gitadd.png)
 3. Mengetahui Status dari Repository
 ```
 $ git status
 ```
+![](foto/$gitstatus.png)
 4. Commit Perubahan
 ```
 $ git commit
 ```
+![](foto/$gitcommit.png)
 5. Memasukkan Konfigurasi ke dalam GIT
 ```
 $ git config
@@ -81,9 +87,15 @@ $ git config
 ```
 $ git branch
 ```
+![](foto/$gitbranch.png)
 7. Menampilkan Sebuah Command
 ```
 $ git help
+```
+![](foto/$githelp.png)
+8. Menampilkan History Commit
+```
+$ git log
 ```
 3 area repo 
 -	Working tree = folder tempat bekerja
@@ -93,3 +105,52 @@ $ git help
 Staging area dan history akan tersimpan kedalam semua file ke dalam folder .git yang tersembunyi. ketika sudah membuat folder dan sudah diinialisasi menjadi repo maka git akan memantau folder tersebut. Jika ada perubahan bisa disimpan pada staging area dengan command  git add, jika sudah oke maka disimpan ke dalam history git commit.
 
 ## [#6 GIT BRANCH & MERGE](https://youtu.be/EGl7KxVOyNs)
+Create/open branch pada GIT caranya menulis 
+```
+$ git branch <nama branch>
+```
+![](foto/$gitbranch.png)
+Jika tidak menulis nama maka menunjukkan list branch dan branch yang aktif (tulisannya berwarna)
+```
+$ git branch
+```
+Jika mengcek history commit, setelah membuat branch maka akan muncul
+```
+…(HEAD -> master, <branch1>, <branch2>,…)
+```
+![](foto/$gitlog_Head.png)
+Untuk menampilkan visualisasi branch
+```
+$ git log --all --decorate --oneline --graph
+```
+![](foto/$gitlog.png)
+Pindah pointer dari branch
+```
+$ git checkout <branch>
+```
+![](foto/$gitcheckout.png)
+Jenis merge
+-	Fast forward
+-	Three-way merge
+
+Merge fast forward karena ada direct path (langsung) dari master ke < branch1>
+```
+$ git merge <branch1>
+```
+![](foto/$gitmerge.png)
+Maka master, pointer head dan commit akan pindah ke < branch1>, < branch1> tidak diperlukan lagi sehingga bisa di delete
+```
+$ git branch -d <branch1>
+```
+![](foto/$gitdel.png)
+Jika mau menghapus branch yang belum di merge maka akan ada peringatan, untuk tetap melakukan perlu menulis
+```
+$ git branch -D <branch2>
+```
+Three-way merge karena tidak ada direct path (tidak langsung), branch akan di merge dan akan membuat commit baru
+
+## [#12 GITIGNORE](https://youtu.be/LK3kX4n-vLM)
+<b>Git ignore</b> adalah sebuah file yang bisa kita simpan kedalam repo agar ada file yang tidak terbawa dalam proses commit. Bisa melakukan dengan add gitignore pada saat membuat repo github.
+
+Caranya pada folder/repo buat file yang Bernama .gitignore, setelah itu daftarkan nama file/afolder yang ingin dihidden
+![](foto/gitignore.png)
